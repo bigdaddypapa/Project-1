@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" onclick="jump()">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,12 @@
     <script defer src= "script.js"></script>
 </head>
 <body>
+    <button class="start">Start Game</button>
     <div id= game>
-        <button class="start">Start Game</button>
         <div id="player"> </div>
         <div id="computer"></div>
     </div>
+    <span id="count">3</span> 
+    <p id="scoreCheck">Score: <span ></span></p>
 </body>
 </html>

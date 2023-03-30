@@ -19,7 +19,7 @@
 #player {
     width: 20px;
     height: 50px;
-    background-color: darkred;
+    background-color:darkgreen;
     position: relative;
     top: 250px;
 }
@@ -40,18 +40,21 @@ We set it to 30 and 70%. This make make it jump up, hover a bit, and then go bac
 #computer {
     width: 20px;
     height: 25px;
-    background-color:darkblue;
+    background-color:darkred;
     position: relative;
     top: 225px;
     left: 480px;
-    animation: collision 1.5s infinite linear;
+    
 }
 /* To make our block slide towards the player, we create an animation and add it to the block(computer).*/
 @keyframes collision{
   0%{left: 500px}
   100%{left: -20px}
 }
-/* create animation class for moving block character to use in javascript */
+
+.animatecomputer{
+  animation: collision 1.5s infinite linear;
+}
 /* copied an already prestyled button */
 .start {
   
@@ -85,7 +88,7 @@ We set it to 30 and 70%. This make make it jump up, hover a bit, and then go bac
 }
 
 
-#scoreCheck{
+p{
   font-family: -apple-system,sans-serif;
   font-size: 1.2rem;
   font-weight: 700;

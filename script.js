@@ -4,7 +4,7 @@ const button = document.querySelector(".start")
 const game = document.querySelector("#game")
 const scoreCheck = document.querySelector("#score")
 const starTimer = document.querySelector("#count")
-const incrementScore = 0
+
 
 // create a button that's gonna start the game after the click
 
@@ -34,6 +34,7 @@ function countdown(){
         game.style.visibility = 'visible'
         scoreCheck.style.visibility = 'visible'
         computer.classList.add ('animatecomputer')
+        hitCheck()
       }
       
     },1100);
@@ -61,15 +62,45 @@ function countdown(){
 // We put that in a variable and parsed as an integer, so the parsing returns the number and not a string
 
 
-let hitCheck = setInterval (function(){
+function hitCheck (){ 
+  let count = 0
+  count++
   let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
   let computerLeft = parseInt(window.getComputedStyle(computer).getPropertyValue("left"));
+  if(count<=10){
+  setInterval (function(){
+  
   if(computerLeft<20 && computerLeft>-20 && playerTop>=225){
       computer.style.animation = "none";
-      alert("Game Over. You lost score: "+Math.floor(incrementScore/100 + " Refresh this page to replay."));
-      incrementScore=0;
-  }else{
-    incrementScore++;
-      document.getElementById("scoreCheck").innerHTML = Math.floor(incrementScore/100);
+      alert("Game Over. You lost score: "+Math.floor(count/100) + " Refresh this page to replay.");
+      count = 0
+      computer.style.animation = "collision 1.5s infinite linear";
   }
-},10)
+  else{
+
+   count++
+      document.getElementById("scoreCheck").innerHTML = Math.floor(count/100);
+    
+  }
+ 
+},15)
+  }
+  if(count>=11){
+    setInterval (function(){
+  
+      if(computerLeft<20 && computerLeft>-20 && playerTop>=225){
+          computer.style.animation = "none";
+          alert("Game Over. You lost score: "+Math.floor(count/100) + " Refresh this page to replay.");
+          count = 0
+          computer.style.animation = "collision 1s infinite linear";
+      }
+      else{
+    
+       count++
+          document.getElementById("scoreCheck").innerHTML = Math.floor(count/100);
+        
+      }
+     
+    },10)
+  }
+}

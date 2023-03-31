@@ -95,6 +95,7 @@ p{
   padding: 1rem 1.3rem;
   text-align: center;
   visibility: hidden;
+  color: white;
 } 
 .start {
   
@@ -111,4 +112,9 @@ p{
   font-weight: 700;
   padding: 1rem 1.3rem;
   visibility: hidden;
+  color: white;
+}
+body{
+  background-image: url('background.avif');
+
 }

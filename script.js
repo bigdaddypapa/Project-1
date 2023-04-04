@@ -35,6 +35,7 @@ function countdown(){
         scoreCheck.style.visibility = 'visible'
         computer.classList.add ('animatecomputer')
         hitCheck()
+  
       }
       
     },1100);
@@ -56,51 +57,55 @@ function countdown(){
     },600)
   }
 //  adding collisions for when we don’t dodge the block with a jump.
-// For this, we will make a function that runs every 10ms and checks if you lost or not.
+// For this, we will make a function that runs every 11ms and checks if you lost or not.
 // then we fetch the top position of the playerand the left position of the block.
-// We set an interval running our function (every 10ms). 
+// We set an interval running our function . 
 // We put that in a variable and parsed as an integer, so the parsing returns the number and not a string
+let count = 0
+count++
 
-
-function hitCheck (){ 
-  let count = 0
-  count++
-  let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
-  let computerLeft = parseInt(window.getComputedStyle(computer).getPropertyValue("left"));
-  if(count<=10){
+function hitCheck(){ 
+  
+ 
   setInterval (function(){
+    let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
+    let computerLeft = parseInt(window.getComputedStyle(computer).getPropertyValue("left"));
   
   if(computerLeft<20 && computerLeft>-20 && playerTop>=225){
       computer.style.animation = "none";
       alert("Game Over. You lost score: "+Math.floor(count/100) + " Refresh this page to replay.");
-      count = 0
-      computer.style.animation = "collision 1.5s infinite linear";
+      scoreCheck.style.visibility = 'hidden'
+      computer.style.animation = "none";
+     
   }
   else{
 
-   count++
-      document.getElementById("scoreCheck").innerHTML = Math.floor(count/100);
-    
-  }
- 
-},15)
-  }
-  if(count>=11){
-    setInterval (function(){
-  
-      if(computerLeft<20 && computerLeft>-20 && playerTop>=225){
-          computer.style.animation = "none";
-          alert("Game Over. You lost score: "+Math.floor(count/100) + " Refresh this page to replay.");
-          count = 0
-          computer.style.animation = "collision 1s infinite linear";
-      }
-      else{
-    
-       count++
-          document.getElementById("scoreCheck").innerHTML = Math.floor(count/100);
-        
-      }
+    count++
+       document.getElementById("scoreCheck").innerHTML = Math.floor(count/100);
      
-    },10)
-  }
+   }
+
+   if (count/100 === 10){
+    computer.style.animation = "none";
+    alert("good job!! you passed level 1, press ok to continue to level 2.") 
+    
+    computer.style.animation = 'collision 0.9s infinite linear'
+ }
+  
+  
+if (count/100=== 20){
+  computer.style.animation = "none";
+  alert("congratulations you won "+Math.floor(count/100) + " Refresh this page to replay.")
+  scoreCheck.style.visibility = 'hidden'
+  computer.style.animation = "none";
+  
+
 }
+},11)
+
+
+ }
+
+
+  
+
